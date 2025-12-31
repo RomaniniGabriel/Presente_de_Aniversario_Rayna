@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Aniversário, Ráyna!</title>
+
+  <!-- Fonte moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background-image: url("assets/background.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    /* Camada escura para melhorar contraste */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 300;
+      opacity: 0.9;
+      margin-bottom: 50px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .buttons {
+      position: relative;
+      width: 400px;
+      height: 200px;
+      margin: 0 auto;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: absolute;
+    }
+
+    #fakeBtn {
+      background: #ff4d6d;
+      color: white;
+      left: 50%;
+      top: 20%;
+      transform: translateX(-50%);
+    }
+
+    #realBtn {
+      background: #4caf50;
+      color: white;
+      left: 50%;
+      top: 65%;
+      transform: translateX(-50%);
+    }
+
+    #realBtn:hover {
+      transform: translateX(-50%) scale(1.05);
+      background: #43a047;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Feliz Aniversário, Ráyna!</h1>
+    <h2>criação do melhor técnico em informática do mundo (vulgo G. Romanini)</h2>
+
+    <div class="buttons">
+      <button id="fakeBtn">Não clique aqui ❌</button>
+      <button id="realBtn">Clique aqui 🎁</button>
+    </div>
+  </div>
+
+  <script>
+    const fakeBtn = document.getElementById("fakeBtn");
+
+    fakeBtn.addEventListener("mouseenter", () => {
+      const container = document.querySelector(".buttons");
+
+      const maxX = container.clientWidth - fakeBtn.offsetWidth;
+      const maxY = container.clientHeight - fakeBtn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      fakeBtn.style.left = `${randomX}px`;
+      fakeBtn.style.top = `${randomY}px`;
+    });
+
+    document.getElementById("realBtn").addEventListener("click", () => {
+      window.location.href = "surpresa.html";
+    });
+  </script>
+
+</body>
+</html>
